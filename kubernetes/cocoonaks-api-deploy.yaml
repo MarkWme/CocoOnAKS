@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: cocoonaks-api
+  name: cocoonaks-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: cocoonaks-api
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: cocoonaks-api
+    spec:
+      containers:
+      - image: xcreuwcontainers.azurecr.io/cocoonaks/api:v0.1
+        name: cocoonaks-api
+        env:
+        - name: MONGODB
+          valueFrom:
+            secretKeyRef:
+              name: infer
+              key: MONGODB

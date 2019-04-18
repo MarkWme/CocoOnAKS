@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: cocoonaks-stats
+  name: cocoonaks-stats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: cocoonaks-stats
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: cocoonaks-stats
+    spec:
+      containers:
+      - image: xcreuwcontainers.azurecr.io/cocoonaks/stats:v0.1.1
+        name: cocoonaks-stats
+        imagePullPolicy: Always
+        env:
+        - name: MONGODB
+          valueFrom:
+            secretKeyRef:
+              name: infer
+              key: MONGODB
+        - name: REACT_APP_API_SERVER
+          value: http://cocoonaks-api.default:7071

@@ -12,7 +12,7 @@ class Images extends React.Component {
     return (
       <StackGrid columnWidth={150}>
       {this.props.images.map(image => {
-        let img = `https://cocoonaks.blob.core.windows.net/thumbs/${image.image}`
+        let img = `https://dsaeuwcocoonaks.blob.core.windows.net/thumbs/${image.image}`
         return (
           <img src={img} alt={image.image} width={150}/>
         );
