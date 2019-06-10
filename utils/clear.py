@@ -1,9 +1,4 @@
 import os
-import numpy as np
-import pymongo
-from pymongo import MongoClient
-import datetime
-import socket
 
 from azure.servicebus import ServiceBusService, Message, Queue
 from azure.storage.blob import BlockBlobService, PublicAccess
